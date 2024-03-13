@@ -23,19 +23,21 @@ kafka-topics --zookeeper zookeeper-1:2181 --create --topic customer --partitions
 kafka-topics --zookeeper zookeeper-1:2181 --create --topic order --partitions 8 --replication-factor 2 --config cleanup.policy=compact --config segment.ms=100 -config segment.bytes=1000 --config delete.retention.ms=100 --config min.cleanable.dirty.ratio=0.01
 Make sure to exit from the container after the topics have been created successfully.
 
-Start the Customer Microservice. 
+Start the Customer Microservice:
 
 docker run -ti -e PUBLIC_IP=$PUBLIC_IP -p 8080:8080 -d --name customer-management-ms gschmutz/customer-management-ms:1.0.2
 to view the log and see that is has been started successfully, enter
 
 docker logs -f customer-management-ms
-Start the Order Microservice
+
+Start the Order Microservice:
 
 docker run -ti -e PUBLIC_IP=$PUBLIC_IP -p 8081:8080 -d --name order-management-ms gschmutz/order-management-ms:1.0.2
 to view the log and see that is has been started successfully, enter
 
 docker logs -f order-management-ms
-Add a Customer
+
+Add a Customer:
 The following curl command adds a new customer via the Customer Microservice:
 
 ```
