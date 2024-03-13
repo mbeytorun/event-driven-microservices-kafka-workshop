@@ -1,0 +1,31 @@
+topic:
+  order.name: order-v1
+  order.replication-factor: 3
+  order.partitions: 8
+
+  customer.name: customer-v1
+
+server:
+  port: 8082
+
+spring:
+  kafka:
+    bootstrap-servers: ${DATAPLATFORM_IP}:9092
+    properties:
+      schema.registry.url: http://${DATAPLATFORM_IP}:8081
+
+    consumer:
+      key-deserializer: org.apache.kafka.common.serialization.LongDeserializer
+      value-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
+      auto-offset-reset: earliest
+      properties:
+        auto.register.schemas: false
+        specific.avro.reader: true
+
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.LongSerializer
+      value-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
+      properties:
+        auto.register.schemas: false
+        acks: all
+        retries: 0
