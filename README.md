@@ -1,4 +1,4 @@
-Event-Driven Microservices with Apache Kafka
+# Event-Driven Microservices with Apache Kafka
 
 Prepare Environment
 The environment is completely based on docker containers. In order to easily start the multiple containers, we are going to use Docker Compose.
