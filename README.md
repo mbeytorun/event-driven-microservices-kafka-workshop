@@ -38,6 +38,7 @@ docker logs -f order-management-ms
 Add a Customer
 The following curl command adds a new customer via the Customer Microservice:
 
+```
 curl -X POST -H 'Content-Type: application/json' -i http://streamingplatform:8080/api/customers --data '{
   "customerId" : 1,
   "firstName" : "James",
@@ -70,6 +71,8 @@ curl -X POST -H 'Content-Type: application/json' -i http://streamingplatform:808
   		}
   ]
 }'
+```
+
 Consuming messages with "Normal" consumer
 In one of the Kafka broker
 
